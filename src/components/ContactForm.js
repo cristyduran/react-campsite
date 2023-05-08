@@ -29,7 +29,7 @@ const ContactForm = () => {
                     </Label>
                     <Col md='10'>
                         <Field
-                            name='firstname'
+                            name='firstName'
                             placeholder='First Name'
                             className='form-control'
                         />
