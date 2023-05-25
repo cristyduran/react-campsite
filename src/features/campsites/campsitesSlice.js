@@ -36,7 +36,7 @@ const campsitesSlice = createSlice({
         },
         [fetchCampsites.rejected]: (state, action) => {
             state.isLoading = false;
-            state.errMsg = action.error ? action.error.message: 'Fetch failed';
+            state.errMsg = action.error ? action.error.message : 'Fetch failed';
         }
     }
 });
@@ -52,5 +52,11 @@ export const selectCampsiteById = (id) => (state) => {
 };
 
 export const selectFeaturedCampsite = (state) => {
-    return state.campsites.campsitesArray.find((campsite) => campsite.featured);
+    return {
+        featuredItem: state.campsites.campsitesArray.find(
+            (campsite) => campsite.featured
+        ),
+        isLoading: state.campsites.isLoading,
+        errMsg: state.campsites.errMsg
+    };
 };
