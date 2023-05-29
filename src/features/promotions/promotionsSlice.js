@@ -10,7 +10,7 @@ export const fetchPromotions = createAsyncThunk(
         if (!response.ok) {
             return Promise.reject('Unable to fetch, status: ' + response.status);
         }
-        const data= await response.json();
+        const data = await response.json();
         return data;
     }
 );
@@ -26,7 +26,10 @@ const promotionsSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [fetchPromotions.pending]: (state, action) => {
+        [fetchPromotions.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchPromotions.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.errMsg = '';
             state.promotionsArray = mapImageURL(action.payload);

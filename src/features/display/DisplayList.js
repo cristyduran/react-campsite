@@ -9,14 +9,14 @@ import Loading from '../../components/Loading';
 
 const DisplayList = () => {
     const items = useSelector((state) => [
-        selectFeaturedCampsite(state), 
-        selectFeaturedPromotion(state), 
+        selectFeaturedCampsite(state),
+        selectFeaturedPromotion(state),
         selectFeaturedPartner(state)
     ]);
     console.log('display items:', items);
 
-    return(
-        <Row> 
+    return (
+        <Row>
             {items.map((item, idx) => {
                 const { featuredItem, isLoading, errMsg } = item;
                 if (isLoading) {
